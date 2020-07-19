@@ -3,9 +3,16 @@
     <div class="container">
       <div class="row">
         <div class="col">
-          <b-dropdown id="dropdown-1" text="Category" class="m-md-2">
-            <b-dropdown-item v-for="category in categories" :key="category" v-on:click="filterCategories(category)">{{category}}</b-dropdown-item>
+          <b-dropdown id="dropdown-1" :text="categoryName" class="m-md-2">
+            <b-dropdown-item v-for="category in categories" :key="category" @click="filteredContacts">{{category}}</b-dropdown-item>
           </b-dropdown>
+          <!-- <button
+            v-for="category in categories"
+            :key="category"
+            class="btn btn-primary"
+            @click="filteredContacts"
+          >{{category}}</button> -->
+          <b-button @click="removeFilter">Remove Filter</b-button>
         </div>
       </div>
       <div class="row">
@@ -20,7 +27,7 @@
             border-variant="secondary"
           >
             <b-card-text align="left">
-              <!-- <p v-if="contact.phone">
+              <p v-if="contact.phone">
                 <b-icon icon="phone"></b-icon> Tel:
                 <a :href="'tel:'+contact.phone">{{contact.phone}}</a>
               </p>
@@ -31,7 +38,7 @@
               <p v-if="contact.website">
                 <b-icon icon="link"></b-icon> Website:
                 <a :href="contact.website" target="_blank">{{contact.website}}</a>
-              </p>-->
+              </p>
             </b-card-text>
             <template v-slot:footer align="left">
               <span class="font-weight-bold">Category:</span>
@@ -51,27 +58,39 @@ export default {
   data() {
     return {
       categories: [],
-      contacts:[]
+      filteredContactsArr:this.contacts,
+      filtered: false,
+      categoryName: "Category"
     };
   },
-  methods:{
-    filterCategories(category){
-      const test = this.contacts.filter(contact => contact.category === category)
-      this.contacts = test
-      // console.log(category)
-      // this.contacts.forEach(contact => console.log(contact.name + category))
+  methods: {
+    filteredContacts() {
+      let category = event.target.innerText;
+      // if (this.filtered) {
+      this.filteredContactsArr = this.contacts.filter(
+        contact => contact.category === category
+      );
+      this.categoryName = category;
+      // console.log(this.contacts);
+      // } else {
+      //   return this.contacts;
+      // }
+      // return console.log(event.target.innerText);
+    },
+    removeFilter(){
+      this.categoryName = "Category",
+      this.filteredContactsArr = this.contacts
     }
   },
   computed: {
     slicedContactArray() {
-      let pageNumber = this.$route.query.page;
-      // Home page where page number === undefined ('/')
-      if (!this.$route.query.page) {
-        pageNumber = 1;
-      }
-      return this.contacts.slice(
-        Number(pageNumber) - 1,
-        Number(pageNumber - 1) + this.contactsPerPage
+      // Set homepage (default page) to 1 [pageNumber === 1] when this.$route.query.page === undefined
+      let pageNumber = this.$route.query.page || 1;
+      // console.log(this.filteredContactsArr);
+      // console.log("slice and dice");
+      return this.filteredContactsArr.slice(
+        Number((pageNumber - 1) * this.contactsPerPage),
+        Number((pageNumber - 1) * this.contactsPerPage) + this.contactsPerPage
       );
     }
   },

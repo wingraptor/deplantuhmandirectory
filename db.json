@@ -1,7 +1,7 @@
 {
   "Contacts": [
     {
-      "id": 1,
+      "id": 0,
       "name": "CERMES at CaveHill",
       "contactPerson": "CERMES at CaveHill",
       "category": "Organisation",
@@ -18,7 +18,7 @@
       "notes": null
     },
     {
-      "id": 2,
+      "id": 1,
       "name": "Organic Growers and Consumers Association (OGCA)",
       "contactPerson": "John Hunte",
       "category": "Organisation",
@@ -35,7 +35,7 @@
       "notes": null
     },
     {
-      "id": 3,
+      "id": 2,
       "name": "Fund Access",
       "contactPerson": "Richard Gibson",
       "category": "Organisation",
@@ -52,7 +52,7 @@
       "notes": null
     },
     {
-      "id": 4,
+      "id": 3,
       "name": "Caribbean Policy Development Center (CPDC)",
       "contactPerson": "Richard Jones",
       "category": "Organisation",
@@ -69,7 +69,7 @@
       "notes": null
     },
     {
-      "id": 5,
+      "id": 4,
       "name": "Ten Habitat",
       "contactPerson": "Ten Habitat",
       "category": "Organisation",
@@ -86,7 +86,7 @@
       "notes": null
     },
     {
-      "id": 6,
+      "id": 5,
       "name": "Green Clean Environmental Solutions Inc.",
       "contactPerson": "Justin Atkinson",
       "category": "Soil/Ammend./Mulches",
@@ -103,7 +103,7 @@
       "notes": null
     },
     {
-      "id": 7,
+      "id": 6,
       "name": "The Caribbean Permaculture Research Institute of Barbados (CPRI)",
       "contactPerson": null,
       "category": "Organisation",
@@ -120,7 +120,7 @@
       "notes": null
     },
     {
-      "id": 8,
+      "id": 7,
       "name": "UWI Faculty of Food and Agriculture",
       "contactPerson": "Gaius Eudoxie",
       "category": "Expertise",
@@ -137,7 +137,7 @@
       "notes": "Soil Expert"
     },
     {
-      "id": 9,
+      "id": 8,
       "name": "Barbados Agricultural Society (BAS)",
       "contactPerson": null,
       "category": "Organisation",
@@ -154,7 +154,7 @@
       "notes": null
     },
     {
-      "id": 10,
+      "id": 9,
       "name": "Biodiversity Conservation and Management ",
       "contactPerson": null,
       "category": "Organisation",
@@ -171,7 +171,7 @@
       "notes": null
     },
     {
-      "id": 11,
+      "id": 10,
       "name": "Bairds Aquaponics",
       "contactPerson": "Damian Hinkson",
       "category": "Farmer/Producer",
@@ -188,7 +188,7 @@
       "notes": null
     },
     {
-      "id": 12,
+      "id": 11,
       "name": "Yam House Farms",
       "contactPerson": "Grantley Trebble",
       "category": "Farmer/Producer",
@@ -205,7 +205,7 @@
       "notes": null
     },
     {
-      "id": 13,
+      "id": 12,
       "name": "Meadows in the Sun",
       "contactPerson": null,
       "category": "Farmer/Producer",
@@ -222,7 +222,7 @@
       "notes": null
     },
     {
-      "id": 14,
+      "id": 13,
       "name": "Sweet Nectar Treats",
       "contactPerson": "Nikita",
       "category": "Farmer/Producer",
@@ -239,7 +239,7 @@
       "notes": null
     },
     {
-      "id": 15,
+      "id": 14,
       "name": "Yelluh Meat",
       "contactPerson": "Dwight Forde",
       "category": "Restaurant",
@@ -256,7 +256,7 @@
       "notes": null
     },
     {
-      "id": 16,
+      "id": 15,
       "name": "Ankh Harmony",
       "contactPerson": "Shane Griffith",
       "category": "Business",

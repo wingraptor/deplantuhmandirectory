@@ -1,6 +1,10 @@
 <template>
   <div class="home">
-    <Card v-bind="groupedProps" />
+    <!-- TODO: Add to notes -->
+    <!-- Only load card component when contact is received from API ->  https://stackoverflow.com/a/45060619 -->
+    <template v-if="contactDataReceived">
+      <Card v-bind="groupedProps" />
+    </template>
     <div class="container">
       <b-pagination-nav
         :link-gen="linkGen"
@@ -29,20 +33,23 @@ export default {
         contacts: [],
         contactsPerPage: 6,
         errorMessage: null
-      }
+      },
+      contactDataReceived: false
     };
   },
   created() {
     this.getContactData();
+    // console.log("Parent element create method called")
   },
   methods: {
     linkGen(pageNum) {
-      return pageNum === 1 ? "?page=1" : `?page=${pageNum}`;
+      return pageNum === 1 ? "?" : `?page=${pageNum}`;
     },
     async getContactData() {
       try {
         const response = await axios.get("http://localhost:3000/contacts");
         this.groupedProps.contacts = response.data;
+        this.contactDataReceived = true;
       } catch (error) {
         this.groupedProps.errorMessage = error;
       }
