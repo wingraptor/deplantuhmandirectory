@@ -53,7 +53,7 @@ export default {
     },
     async getContactData() {
       try {
-        const response = await axios.get("http://localhost:3000/contacts");
+        const response = await axios.get("https://my-json-server.typicode.com/wingraptor/deplantuhmandirectory/contacts");
         this.groupedProps.contacts = response.data;
         this.contactCount = response.data.length;
         this.contactDataReceived = true;
