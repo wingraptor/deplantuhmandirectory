@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <Jumbotron />
     <!-- TODO: Add to notes -->
     <!-- Only load card component when contact is received from API ->  https://stackoverflow.com/a/45060619 -->
     <template v-if="contactDataReceived">
@@ -22,12 +23,14 @@
 <script>
 // @ is an alias to /src
 import Card from "@/components/Card.vue";
+import Jumbotron from "@/components/Jumbotron.vue";
 import axios from "axios";
 
 export default {
   name: "Home",
   components: {
-    Card
+    Card,
+    Jumbotron
   },
   data() {
     return {
@@ -59,7 +62,7 @@ export default {
       }
     },
     setContactsCount(count) {
-      this.contactCount = count
+      this.contactCount = count;
     }
   }
 };

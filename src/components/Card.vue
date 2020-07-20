@@ -2,15 +2,35 @@
   <div class="card-component">
     <div class="container">
       <div class="row">
-        <div class="col">
-          <b-dropdown id="dropdown-1" :text="categoryName" class="m-md-2">
+        <div class="col d-flex justify-content-center">
+          <!-- <b-dropdown id="dropdown-1" :text="categoryName" class="m-md-2">
             <b-dropdown-item @click="removeFilter">All Categories</b-dropdown-item>
             <b-dropdown-item
               v-for="category in categories"
               :key="category"
               @click="filteredContacts"
             >{{category}}</b-dropdown-item>
-          </b-dropdown>
+          </b-dropdown>-->
+
+          <b-button-group size="lg" class="category-button-group">
+            <b-button
+              v-for="category in categories"
+              :key="category"
+              :data-category="category"
+              @click="filteredContacts"
+              v-b-popover.hover.top="category"
+            >
+              <v-icon :name="getIcon(category)"></v-icon>
+            </b-button>
+            <b-button @click="removeFilter" variant="danger">Remove Filter</b-button>
+          </b-button-group>
+          <!-- <v-icon name="regular/building"></v-icon>
+          <v-icon name="utensils"></v-icon>
+          <v-icon name="tractor"></v-icon>
+          <v-icon name="briefcase"></v-icon>
+          <v-icon name="user-tie"></v-icon>
+          <v-icon name="seedling"></v-icon>
+          <v-icon name="truck-pickup"></v-icon>-->
           <!-- <button
             v-for="category in categories"
             :key="category"
@@ -48,17 +68,20 @@
               <p v-else>
                 <v-icon name="facebook"></v-icon>
                 <a :href="contact.facebook" target="_blank">Facebook</a>
-              </p> -->
+              </p>-->
             </b-card-text>
             <template class="test" v-slot:footer>
               <!-- <span class="font-weight-bold">Category:</span>
               <em>{{contact.category}}</em>-->
               <!-- <a :href="contact.website" target="_blank"> -->
-                <v-icon name="link" v-b-popover.hover.html="generatePopover(contact.website)"></v-icon>
+              <v-icon name="link" v-b-popover.hover.html="generatePopover(contact.website)"></v-icon>
               <!-- </a> -->
               <v-icon v-b-popover.hover="contact.phone || 'No number available'" name="phone"></v-icon>
               <v-icon v-b-popover.hover="contact.email || 'No email available'" name="envelope"></v-icon>
-              <v-icon v-b-popover.hover.html="generatePopover(contact.facebook)" name="brands/facebook"></v-icon>
+              <v-icon
+                v-b-popover.hover.html="generatePopover(contact.facebook)"
+                name="brands/facebook"
+              ></v-icon>
             </template>
           </b-card>
         </div>
@@ -81,24 +104,48 @@ export default {
   },
   methods: {
     filteredContacts() {
-      let category = event.target.innerText;
+      // TODO: Add to Notes
+      // Use event.currentTarget because of this: https://stackoverflow.com/a/50049249
+      let category = event.currentTarget.getAttribute("data-category");
       this.filteredContactsArr = this.contacts.filter(
         contact => contact.category === category
       );
       this.categoryName = category;
-      // Return user to Page 1 (home page) when switching category. This is because, if user is on page 2, then switches to a category which does not 
+      // Return user to Page 1 (home page) when switching category. This is because, if user is on page 2, then switches to a category which does not
       // have enough contacts to 'have' a Page 2, no cards will be displayed
-      this.$router.push('/')
+      if (this.$route.query.page) {
+        this.$router.push("/");
+      }
     },
     removeFilter() {
       (this.categoryName = "All Categories"),
         (this.filteredContactsArr = this.contacts);
     },
-    generatePopover(data){
-      if(!data){
-        return "Not available"
+    generatePopover(data) {
+      if (!data) {
+        return "Not available";
       }
-      return `<a href=${data} target=_blank>${data}</a>`
+      return `<a href=${data} target=_blank>${data}</a>`;
+    },
+    getIcon(category) {
+      switch (category) {
+        case "Organisation":
+          return "regular/building";
+        case "Trucking/Freighting":
+          return "truck-pickup";
+        case "Farmer/Producer":
+          return "tractor";
+        case "Business":
+          return "briefcase";
+        case "Restaurant":
+          return "utensils";
+        case "Expertise":
+          return "user-tie";
+        case "Soil/Ammend./Mulches":
+          return "globe-americas";
+        default:
+          break;
+      }
     }
   },
   computed: {
@@ -132,9 +179,13 @@ export default {
   margin-bottom: 20px;
 }
 
-.card-footer{
-  display:flex;
+.card-footer {
+  display: flex;
   align-content: center;
   justify-content: space-around;
+}
+
+.category-button-group{
+  margin-bottom: 5rem;
 }
 </style>
