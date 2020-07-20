@@ -3,12 +3,14 @@
     <!-- TODO: Add to notes -->
     <!-- Only load card component when contact is received from API ->  https://stackoverflow.com/a/45060619 -->
     <template v-if="contactDataReceived">
-      <Card v-bind="groupedProps" />
+      <Card v-bind="groupedProps" @contacts-count="setContactsCount" />
     </template>
     <div class="container">
       <b-pagination-nav
         :link-gen="linkGen"
-        :number-of-pages="Math.ceil(groupedProps.contacts.length / groupedProps.contactsPerPage)"
+        :number-of-pages="Math.ceil(
+          contactCount / groupedProps.contactsPerPage
+        )"
         :limit="10"
         align="center"
         use-router
@@ -34,6 +36,7 @@ export default {
         contactsPerPage: 6,
         errorMessage: null
       },
+      contactCount: 0,
       contactDataReceived: false
     };
   },
@@ -49,10 +52,14 @@ export default {
       try {
         const response = await axios.get("http://localhost:3000/contacts");
         this.groupedProps.contacts = response.data;
+        this.contactCount = response.data.length;
         this.contactDataReceived = true;
       } catch (error) {
         this.groupedProps.errorMessage = error;
       }
+    },
+    setContactsCount(count) {
+      this.contactCount = count
     }
   }
 };

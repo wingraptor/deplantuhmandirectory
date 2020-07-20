@@ -4,14 +4,18 @@
       <div class="row">
         <div class="col">
           <b-dropdown id="dropdown-1" :text="categoryName" class="m-md-2">
-            <b-dropdown-item v-for="category in categories" :key="category" @click="filteredContacts">{{category}}</b-dropdown-item>
+            <b-dropdown-item
+              v-for="category in categories"
+              :key="category"
+              @click="filteredContacts"
+            >{{category}}</b-dropdown-item>
           </b-dropdown>
           <!-- <button
             v-for="category in categories"
             :key="category"
             class="btn btn-primary"
             @click="filteredContacts"
-          >{{category}}</button> -->
+          >{{category}}</button>-->
           <b-button @click="removeFilter">Remove Filter</b-button>
         </div>
       </div>
@@ -28,15 +32,15 @@
           >
             <b-card-text align="left">
               <p v-if="contact.phone">
-                <b-icon icon="phone"></b-icon> Tel:
+                <b-icon icon="phone"></b-icon>Tel:
                 <a :href="'tel:'+contact.phone">{{contact.phone}}</a>
               </p>
               <p v-if="contact.email">
-                <b-icon icon="envelope"></b-icon> Email:
+                <b-icon icon="envelope"></b-icon>Email:
                 <a :href="'mailto:'+contact.email">{{contact.email}}</a>
               </p>
               <p v-if="contact.website">
-                <b-icon icon="link"></b-icon> Website:
+                <b-icon icon="link"></b-icon>Website:
                 <a :href="contact.website" target="_blank">{{contact.website}}</a>
               </p>
             </b-card-text>
@@ -58,7 +62,7 @@ export default {
   data() {
     return {
       categories: [],
-      filteredContactsArr:this.contacts,
+      filteredContactsArr: this.contacts,
       filtered: false,
       categoryName: "Category"
     };
@@ -77,26 +81,30 @@ export default {
       // }
       // return console.log(event.target.innerText);
     },
-    removeFilter(){
-      this.categoryName = "Category",
-      this.filteredContactsArr = this.contacts
+    removeFilter() {
+      (this.categoryName = "Category"),
+        (this.filteredContactsArr = this.contacts);
     }
   },
   computed: {
     slicedContactArray() {
       // Set homepage (default page) to 1 [pageNumber === 1] when this.$route.query.page === undefined
       let pageNumber = this.$route.query.page || 1;
-      // console.log(this.filteredContactsArr);
-      // console.log("slice and dice");
       return this.filteredContactsArr.slice(
         Number((pageNumber - 1) * this.contactsPerPage),
         Number((pageNumber - 1) * this.contactsPerPage) + this.contactsPerPage
       );
-    }
+    },
   },
   mounted() {
     // Get list of unique contact categories: https://stackoverflow.com/a/33512273
+    // TODO: Add to notes
     this.categories = [...new Set(this.contacts.map(obj => obj.category))];
+  },
+  watch:{
+    filteredContactsArr(val){
+      this.$emit("contacts-count", val.length);
+    }
   }
 };
 </script>
