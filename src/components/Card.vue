@@ -82,16 +82,13 @@ export default {
   methods: {
     filteredContacts() {
       let category = event.target.innerText;
-      // if (this.filtered) {
       this.filteredContactsArr = this.contacts.filter(
         contact => contact.category === category
       );
       this.categoryName = category;
-      // console.log(this.contacts);
-      // } else {
-      //   return this.contacts;
-      // }
-      // return console.log(event.target.innerText);
+      // Return user to Page 1 (home page) when switching category. This is because, if user is on page 2, then switches to a category which does not 
+      // have enough contacts to 'have' a Page 2, no cards will be displayed
+      this.$router.push('/')
     },
     removeFilter() {
       (this.categoryName = "All Categories"),
