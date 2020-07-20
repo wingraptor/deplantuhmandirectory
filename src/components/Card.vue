@@ -12,7 +12,7 @@
             >{{category}}</b-dropdown-item>
           </b-dropdown>-->
 
-          <b-button-group size="lg" class="category-button-group">
+          <b-button-group size="md" class="category-button-group">
             <b-button
               v-for="category in categories"
               :key="category"
@@ -186,6 +186,6 @@ export default {
 }
 
 .category-button-group{
-  margin-bottom: 5rem;
+  margin-bottom: 1.5rem;
 }
 </style>

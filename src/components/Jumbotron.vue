@@ -16,6 +16,6 @@ export default {
 <style scoped>
 
 .jumbotron-component {
-  margin-bottom: 10rem;
+  margin-bottom: 1.5rem;
 }
 </style>
