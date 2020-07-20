@@ -74,11 +74,12 @@
               <!-- <span class="font-weight-bold">Category:</span>
               <em>{{contact.category}}</em>-->
               <!-- <a :href="contact.website" target="_blank"> -->
-              <v-icon name="link" v-b-popover.hover.html="generatePopover(contact.website)"></v-icon>
+              <v-icon :scale="iconScale" name="link" v-b-popover.hover.html="generatePopover(contact.website)"></v-icon>
               <!-- </a> -->
-              <v-icon v-b-popover.hover="contact.phone || 'No number available'" name="phone"></v-icon>
-              <v-icon v-b-popover.hover="contact.email || 'No email available'" name="envelope"></v-icon>
+              <v-icon :scale="iconScale" v-b-popover.hover="contact.phone || 'No number available'" name="phone"></v-icon>
+              <v-icon :scale="iconScale" v-b-popover.hover="contact.email || 'No email available'" name="envelope"></v-icon>
               <v-icon
+              :scale="iconScale"
                 v-b-popover.hover.html="generatePopover(contact.facebook)"
                 name="brands/facebook"
               ></v-icon>
@@ -99,7 +100,8 @@ export default {
       categories: [],
       filteredContactsArr: this.contacts,
       filtered: false,
-      categoryName: "All Categories"
+      categoryName: "All Categories",
+      iconScale: "1.5"
     };
   },
   methods: {
