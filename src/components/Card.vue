@@ -2,7 +2,7 @@
   <div class="card-component">
     <div class="container">
       <div class="row">
-        <div class="col d-flex justify-content-center">
+        <div class="col d-flex justify-content-center" id="filter-div">
           <!-- <b-dropdown id="dropdown-1" :text="categoryName" class="m-md-2">
             <b-dropdown-item @click="removeFilter">All Categories</b-dropdown-item>
             <b-dropdown-item
@@ -11,7 +11,6 @@
               @click="filteredContacts"
             >{{category}}</b-dropdown-item>
           </b-dropdown>-->
-
           <b-button-group size="md" class="category-button-group">
             <b-button
               v-for="category in categories"
@@ -46,9 +45,12 @@
           v-for="(contact) in slicedContactArray"
           :key="contact.name"
         >
+          <!-- TODO: Add to Notes -->
+          <!-- https://stackoverflow.com/questions/45341169/bootstrap-vue-card-component-image-doesnt-render -->
+          <!-- ../assets/card-images/produce.jpg -->
           <b-card
             :title="contact.name"
-            :img-src="'https://via.placeholder.com/400x300'"
+            :img-src="getImage(contact.category)"
             border-variant="secondary"
           >
             <b-card-text align="left">
@@ -74,12 +76,24 @@
               <!-- <span class="font-weight-bold">Category:</span>
               <em>{{contact.category}}</em>-->
               <!-- <a :href="contact.website" target="_blank"> -->
-              <v-icon :scale="iconScale" name="link" v-b-popover.hover.html="generatePopover(contact.website)"></v-icon>
-              <!-- </a> -->
-              <v-icon :scale="iconScale" v-b-popover.hover="contact.phone || 'No number available'" name="phone"></v-icon>
-              <v-icon :scale="iconScale" v-b-popover.hover="contact.email || 'No email available'" name="envelope"></v-icon>
               <v-icon
-              :scale="iconScale"
+                :scale="iconScale"
+                name="link"
+                v-b-popover.hover.html="generatePopover(contact.website)"
+              ></v-icon>
+              <!-- </a> -->
+              <v-icon
+                :scale="iconScale"
+                v-b-popover.hover="contact.phone || 'No number available'"
+                name="phone"
+              ></v-icon>
+              <v-icon
+                :scale="iconScale"
+                v-b-popover.hover="contact.email || 'No email available'"
+                name="envelope"
+              ></v-icon>
+              <v-icon
+                :scale="iconScale"
                 v-b-popover.hover.html="generatePopover(contact.facebook)"
                 name="brands/facebook"
               ></v-icon>
@@ -101,7 +115,17 @@ export default {
       filteredContactsArr: this.contacts,
       filtered: false,
       categoryName: "All Categories",
-      iconScale: "1.5"
+      iconScale: "1.5",
+      categoryImages: {
+        Organisation: "https://i.imgur.com/CmUEPeS.jpg",
+        Business: "https://i.imgur.com/MJt6VD3.jpg",
+        Freighting: "https://i.imgur.com/yEXo2B8.jpg",
+        Farmer: "https://i.imgur.com/4dBKaIa.jpg",
+        AgriculturalSupplies: "https://i.imgur.com/LEwmNIF.jpg",
+        SoilAndAmmendments: "https://i.imgur.com/Q8uxEwL.jpg",
+        Restaurant: "https://i.imgur.com/0v0L5rN.png",
+        Expertise: "https://i.imgur.com/h2mEK2u.jpg"
+      }
     };
   },
   methods: {
@@ -123,6 +147,7 @@ export default {
       (this.categoryName = "All Categories"),
         (this.filteredContactsArr = this.contacts);
     },
+    // Generate popover for contact info. (tel., email etc)
     generatePopover(data) {
       if (!data) {
         return "Not available";
@@ -135,7 +160,7 @@ export default {
           return "regular/building";
         case "Trucking/Freighting":
           return "truck-pickup";
-        case "Farmer/Producer":
+        case "Farmer":
           return "tractor";
         case "Business":
           return "briefcase";
@@ -143,17 +168,25 @@ export default {
           return "utensils";
         case "Expertise":
           return "user-tie";
-        case "Soil/Ammend./Mulches":
+        case "Agricultural Supplies":
           return "globe-americas";
         default:
           break;
       }
+    },
+    getImage(category) {
+      let formattedCategory = category.split(" ").join("");
+      return this.categoryImages[formattedCategory];
     }
   },
   computed: {
     slicedContactArray() {
       // Set homepage (default page) to 1 [pageNumber === 1] when this.$route.query.page === undefined
       let pageNumber = this.$route.query.page || 1;
+      // Allows for scrolling to filter Div element on moving to a new page (via pagination)
+      const filterDiv = document.querySelector("#filter-div");
+      filterDiv.scrollIntoView(true);
+
       return this.filteredContactsArr.slice(
         Number((pageNumber - 1) * this.contactsPerPage),
         Number((pageNumber - 1) * this.contactsPerPage) + this.contactsPerPage
@@ -187,7 +220,7 @@ export default {
   justify-content: space-around;
 }
 
-.category-button-group{
+.category-button-group {
   margin-bottom: 1.5rem;
 }
 </style>
