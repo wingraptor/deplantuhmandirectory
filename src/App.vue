@@ -1,9 +1,12 @@
 <template>
   <div id="app">
     <div id="nav">
-      <b-navbar type="dark" variant="dark">
+      <b-navbar type="light">
         <router-link to="/">
-          <b-navbar-brand>De Plantuh Man Directory</b-navbar-brand>
+          <b-navbar-brand>
+            <img src="./assets/logo_transparent.png" alt="" height="40" >
+            De Plantuh Man Directory
+            </b-navbar-brand>
         </router-link>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -21,7 +24,7 @@
               <b-form-input size="sm" class="mr-sm-2" placeholder="Search"></b-form-input>
               <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
             </b-nav-form>
-          </b-navbar-nav> -->
+          </b-navbar-nav>-->
         </b-collapse>
       </b-navbar>
       <!-- <router-link to="/">Home</router-link>|
@@ -38,4 +41,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+#nav {
+  background-color: #fff;
+}
 </style>
