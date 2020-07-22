@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
-      <b-navbar type="dark" variant="info">
+      <b-navbar type="dark" variant="dark">
         <router-link to="/">
           <b-navbar-brand>De Plantuh Man Directory</b-navbar-brand>
         </router-link>
@@ -36,12 +36,6 @@
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* text-align: center; */
-  color: #2c3e50;
 }
-
-/* .navbar {
-  margin-bottom: 1.5rem;
-} */
 
 </style>

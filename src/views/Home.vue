@@ -63,6 +63,9 @@ export default {
     },
     setContactsCount(count) {
       this.contactCount = count;
+    },
+    test(){
+      alert("test")
     }
   }
 };

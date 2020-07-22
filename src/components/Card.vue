@@ -2,6 +2,11 @@
   <div class="card-component">
     <div class="container">
       <div class="row">
+        <div class="col d-flex justify-content-center">
+          <h3>Filter</h3>
+        </div>
+      </div>
+      <div class="row">
         <div class="col d-flex justify-content-center" id="filter-div">
           <!-- <b-dropdown id="dropdown-1" :text="categoryName" class="m-md-2">
             <b-dropdown-item @click="removeFilter">All Categories</b-dropdown-item>
@@ -73,15 +78,11 @@
               </p>-->
             </b-card-text>
             <template class="test" v-slot:footer>
-              <!-- <span class="font-weight-bold">Category:</span>
-              <em>{{contact.category}}</em>-->
-              <!-- <a :href="contact.website" target="_blank"> -->
-              <v-icon
+              <!-- <v-icon
                 :scale="iconScale"
                 name="link"
                 v-b-popover.hover.html="generatePopover(contact.website)"
               ></v-icon>
-              <!-- </a> -->
               <v-icon
                 :scale="iconScale"
                 v-b-popover.hover="contact.phone || 'No number available'"
@@ -96,7 +97,11 @@
                 :scale="iconScale"
                 v-b-popover.hover.html="generatePopover(contact.facebook)"
                 name="brands/facebook"
-              ></v-icon>
+              ></v-icon>-->
+              <img src="../assets/icons/link.svg" alt height="26" v-b-popover.hover.html="generatePopover(contact.website)" />
+              <img src="../assets/icons/phone-call.svg" alt height="26" v-b-popover.hover="contact.phone || 'No number available'"/>
+              <img src="../assets/icons/email.svg" alt height="26" v-b-popover.hover="contact.email || 'No email available'" />
+              <img src="../assets/icons/facebook.svg" alt height="26" v-b-popover.hover.html="generatePopover(contact.facebook)" />
             </template>
           </b-card>
         </div>
@@ -184,8 +189,8 @@ export default {
       // Set homepage (default page) to 1 [pageNumber === 1] when this.$route.query.page === undefined
       let pageNumber = this.$route.query.page || 1;
       // Allows for scrolling to filter Div element on moving to a new page (via pagination)
-      const filterDiv = document.querySelector("#filter-div");
-      filterDiv.scrollIntoView(true);
+      // const filterDiv = document.querySelector("#filter-div");
+      // filterDiv.scrollIntoView(true);
 
       return this.filteredContactsArr.slice(
         Number((pageNumber - 1) * this.contactsPerPage),
