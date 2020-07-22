@@ -4,10 +4,15 @@
       <b-navbar type="light">
         <router-link to="/">
           <b-navbar-brand>
-            <img src="./assets/logo_transparent.png" alt="" height="40" >
+            <img src="./assets/logo_transparent.png" alt height="40" />
             De Plantuh Man Directory
-            </b-navbar-brand>
+          </b-navbar-brand>
         </router-link>
+        <a
+          href="https://forms.gle/DEgFuKVMR9kTDJmo9"
+          class="color-highlight-one nav-link"
+          target="_blank"
+        >Get Listed!</a>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
@@ -27,14 +32,21 @@
           </b-navbar-nav>-->
         </b-collapse>
       </b-navbar>
-      <!-- <router-link to="/">Home</router-link>|
-      <router-link to="/about">About</router-link>-->
+      <!-- <router-link to="/">Home</router-link>| -->
     </div>
     <router-view />
   </div>
 </template>
 
 <style>
+.color-highlight-one {
+  color: #00b906;
+}
+
+.nav-link{
+  font-weight: bold
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

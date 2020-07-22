@@ -53,7 +53,7 @@ export default {
     },
     async getContactData() {
       try {
-        const response = await axios.get("https://my-json-server.typicode.com/wingraptor/deplantuhmandirectory/contacts");
+        const response = await axios.get("https://sheet.best/api/sheets/a65159dd-5155-4cf9-8bcf-2fd4168b32fc");
         this.groupedProps.contacts = response.data;
         this.contactCount = response.data.length;
         this.contactDataReceived = true;
