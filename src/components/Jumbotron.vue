@@ -1,7 +1,7 @@
 <template>
   <div class="jumbotron-component">
     <div class="test">
-      <b-img src="https://i.imgur.com/XYPkzKp.jpg" fluid-grow alt="Responsive image"></b-img>
+      <b-img src="https://i.imgur.com/6fp8Iks.jpg" fluid-grow alt="Responsive image"></b-img>
     </div>
   </div>
 </template>
