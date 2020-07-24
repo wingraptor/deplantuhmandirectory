@@ -5,7 +5,7 @@
         <router-link to="/">
           <b-navbar-brand>
             <img src="./assets/logo_transparent.png" alt height="40" />
-            De Plantuh Man Directory
+            <span>Directory</span>
           </b-navbar-brand>
         </router-link>
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -35,7 +35,7 @@
 
 
 .nav-link {
-  font-weight: bold;
+  /* font-weight: bold; */
   color: #00b906 !important;
 }
 
