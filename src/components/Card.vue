@@ -177,7 +177,7 @@ export default {
   display: flex;
   align-content: center;
   justify-content: space-around;
-  background-color: #AEDA34;
+  background-color: #FFF0F5;
 }
 
 #filter-div {
