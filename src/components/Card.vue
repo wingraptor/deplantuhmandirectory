@@ -24,7 +24,7 @@
           <!-- https://stackoverflow.com/questions/45341169/bootstrap-vue-card-component-image-doesnt-render -->
           <b-card
             :title="contact.name"
-            :img-src="getImage(contact.category)"
+            :img-src="contact.logoUrl || getImage(contact.category)"
             border-variant="secondary"
           >
             <b-card-text align="left">
@@ -166,6 +166,11 @@ export default {
 <style scoped>
 .card {
   margin-bottom: 20px;
+  width: 100%;
+}
+
+.card-img-top{
+
 }
 
 .card-footer {
