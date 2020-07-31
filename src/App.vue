@@ -33,12 +33,12 @@
 
 <style>
 
-
-.nav-link {
-  /* font-weight: bold; */
-  color: #00b906 !important;
+:root{
+  --hightlight-one: #00b906;
+  --highlight-two: #506C64;
+  --highlight-two-darker: #2d3d38;
+  --highlight-three:#CDD3D5;
 }
-
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -48,4 +48,32 @@
 #nav {
   background-color: #fff;
 }
+
+.nav-link {
+  /* font-weight: bold; */
+  color: #00b906 !important;
+}
+
+.btn {
+  background-color: var(--highlight-two) !important;
+}
+.btn:hover, .btn:focus{
+  background-color: var(--highlight-two-darker) !important;
+}
+
+.page-link{
+  color: var(--highlight-two) !important;
+}
+
+.page-link:hover{
+  background-color: var(--highlight-two) !important;
+  color: white !important;
+}
+
+.page-item.active .page-link{
+  background-color: var(--highlight-two) !important;
+  color: white !important;
+  border-color: var(--highlight-two) !important;
+}
+
 </style>

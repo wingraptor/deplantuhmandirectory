@@ -169,15 +169,11 @@ export default {
   width: 100%;
 }
 
-.card-img-top{
-
-}
-
 .card-footer {
   display: flex;
   align-content: center;
   justify-content: space-around;
-  background-color: #FFF0F5;
+  background-color: var(--highlight-three);
 }
 
 #filter-div {
