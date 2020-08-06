@@ -1,7 +1,6 @@
 <template>
   <div class="home">
     <Jumbotron />
-    <!-- TODO: Add to notes -->
     <!-- Only load card component when contact is received from API ->  https://stackoverflow.com/a/45060619 -->
     <template v-if="contactDataReceived">
       <Card v-bind="groupedProps" @contacts-count="setContactsCount" />
@@ -61,6 +60,7 @@ export default {
         this.groupedProps.errorMessage = error;
       }
     },
+    // Set contactsCount so that the correct number of pages are displayed on the pagination tab. Page count corresponds with the number of contacts current in view
     setContactsCount(count) {
       this.contactCount = count;
     },

@@ -20,7 +20,6 @@
           v-for="(contact) in slicedContactArray"
           :key="contact.name"
         >
-          <!-- TODO: Add to Notes -->
           <!-- https://stackoverflow.com/questions/45341169/bootstrap-vue-card-component-image-doesnt-render -->
           <b-card
             :title="contact.name"
@@ -103,10 +102,11 @@ export default {
     };
   },
   methods: {
+    // Filter contacts according to specific category
     filteredContacts() {
-      // TODO: Add to Notes
-      // Use event.currentTarget because of this: https://stackoverflow.com/a/50049249
-      let category = event.currentTarget.getAttribute("data-category");
+      // Use event.currentTarget if event listener is attached to parent element 
+      // but you want to access properties of the child: https://stackoverflow.com/a/50049249
+      let category = event.target.getAttribute("data-category");
       this.filteredContactsArr = this.contacts.filter(
         (contact) => contact.category === category
       );
@@ -128,6 +128,7 @@ export default {
       }
       return `<a href=${data} target=_blank>${data}</a>`;
     },
+    // Get image for card depending on category; this is default image that is used if no logo image is provided for the contact
     getImage(category) {
       let formattedCategory = category.split(" ").join("");
       return this.categoryImages[formattedCategory];
@@ -135,7 +136,7 @@ export default {
   },
   computed: {
     slicedContactArray() {
-      // Set homepage (default page) to 1 [pageNumber === 1] when this.$route.query.page === undefined
+      // Set homepage (default page) to 1, that is, pageNumber === 1] when this.$route.query.page === undefined
       let pageNumber = this.$route.query.page || 1;
       // Allows for scrolling to filter Div element on moving to a new page (via pagination)
       // const filterDiv = document.querySelector("#filter-div");
@@ -148,13 +149,10 @@ export default {
     },
   },
   mounted() {
-    // Get list of unique contact categories: https://stackoverflow.com/a/33512273
-    // TODO: Add to notes
     this.categories = [...new Set(this.contacts.map((obj) => obj.category))];
   },
-  // TODO: Add to notes: https://vuejs.org/v2/api/#watch
   watch: {
-    // TODO: Add to notes https://medium.com/@hvekriya/pass-data-from-child-to-parent-in-vue-js-b1ff917f70cc
+    // Watch for changes to the filteredContactsArr and send its length to the parent element https://vuejs.org/v2/api/#watch and https://medium.com/@hvekriya/pass-data-from-child-to-parent-in-vue-js-b1ff917f70cc
     filteredContactsArr(val) {
       this.$emit("contacts-count", val.length);
     },
