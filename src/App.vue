@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
-      <b-navbar toggleable="lg" type="light">
+      <b-navbar toggleable="lg" type="light" class="border-bottom">
         <router-link to="/">
           <b-navbar-brand>
             <img src="./assets/logo_transparent.png" alt height="40" />

@@ -21,14 +21,13 @@
           :key="contact.name"
         >
           <!-- https://stackoverflow.com/questions/45341169/bootstrap-vue-card-component-image-doesnt-render -->
-          <b-card
-            :title="contact.name"
-            :img-src="contact.logoUrl || getImage(contact.category)"
-            border-variant="secondary"
-          >
-            <b-card-text align="left">
-              <p v-if="contact.description">{{contact.description}}</p>
-              <!-- <p v-if="contact.phone">
+          <b-card border-variant="secondary">
+            <a :href="'/contact/'+ contact.id" class="contact-link">
+              <b-card-img :src="contact.logoUrl || getImage(contact.category)"></b-card-img>
+              <b-card-title>{{contact.name}}</b-card-title>
+              <b-card-text align="left">
+                <p v-if="contact.description">{{contact.description}}</p>
+                <!-- <p v-if="contact.phone">
                 <b-icon icon="phone"></b-icon>
                 <a :href="'tel:'+contact.phone">{{contact.phone}}</a>
               </p>
@@ -43,8 +42,10 @@
               <p v-else>
                 <v-icon name="facebook"></v-icon>
                 <a :href="contact.facebook" target="_blank">Facebook</a>
-              </p>-->
-            </b-card-text>
+                </p>-->
+              </b-card-text>
+            </a>
+
             <template v-slot:footer>
               <img
                 src="../assets/icons/link.svg"
@@ -104,7 +105,7 @@ export default {
   methods: {
     // Filter contacts according to specific category
     filteredContacts() {
-      // Use event.currentTarget if event listener is attached to parent element 
+      // Use event.currentTarget if event listener is attached to parent element
       // but you want to access properties of the child: https://stackoverflow.com/a/50049249
       let category = event.target.getAttribute("data-category");
       this.filteredContactsArr = this.contacts.filter(
@@ -162,6 +163,17 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+.contact-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.contact-link:hover {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
 .card {
   margin-bottom: 20px;
   width: 100%;

@@ -1,0 +1,107 @@
+<template>
+  <div class="contact">
+    <div class="container my-5">
+      <div class="row py-3 pt-4 border-bottom">
+        <div class="col d-flex align-items-center">
+          <!-- <img :src="data.logoUrl" alt="" width=""> -->
+          <div class="logo">
+            <b-img :src="data.logoUrl" rounded width="150"></b-img>
+          </div>
+          <div class="contact-name">
+            <h2>{{data.name}}</h2>
+            <!-- TODO: Make category a clickable link -->
+            <span class="badge badge-secondary">{{data.category}}</span>
+          </div>
+        </div>
+        <!-- <div class="col"></div> -->
+      </div>
+      <div class="row py-4 border-bottom">
+        <div class="col">
+          <h3>Description</h3>
+          <p>{{data.description}}</p>
+        </div>
+      </div>
+      <div class="row py-4">
+        <div class="col">
+          <h3>Contact Information</h3>
+          <ul>
+            <li v-if="data.address" class="py-1">
+              <strong>Address: </strong>
+              {{data.address}}
+            </li>
+            <li v-if="data.website" class="py-1">
+              <strong>Website: </strong>
+              <a :href="data.website" target="_blank">{{data.website}}</a>
+            </li>
+            <li v-if="data.email" class="py-1">
+              <strong>Email: </strong>
+              <a :href="'mailto:'+ data.email">{{data.email}}</a>
+            </li>
+            <li v-if="data.phone" class="py-1">
+              <strong>Tel: </strong>
+              <a :href="'tel:+'+ data.phone">{{data.phone}}</a>
+            </li>
+            <li>
+              <span>
+                <strong>Social Profiles:</strong>
+              </span>
+              <span class="social-media-icons">
+                <a v-if="data.facebook" :href="data.facebook" class="text-secondary">
+                  <v-icon name="brands/facebook" class="mx-1" scale="1.25"></v-icon>
+                </a>
+                <a v-if="data.instagram" :href="data.instagram" class="text-secondary">
+                  <v-icon name="brands/instagram" class="mx-1" scale="1.25"></v-icon>
+                </a>
+                <a v-if="data.twitter" :href="data.twitter" class="text-secondary">
+                  <v-icon name="brands/twitter" class="mx-1" scale="1.25"></v-icon>
+                </a>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="container">
+
+    </div>-->
+  </div>
+</template>
+
+<script>
+// @ is an alias to /src
+import axios from "axios";
+
+export default {
+  name: "ContactPage",
+  components: {},
+  data() {
+    return {
+      data: {},
+    };
+  },
+  created() {
+    this.getContactData();
+  },
+  methods: {
+    async getContactData() {
+      const apiURL =
+        "https://sheet.best/api/sheets/a65159dd-5155-4cf9-8bcf-2fd4168b32fc";
+      const field = "id";
+      const id = this.$route.params.id;
+      try {
+        const response = await axios.get(`${apiURL}/${field}/${id}`);
+        this.data = response.data[0];
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  },
+};
+</script>
+
+<style scoped>
+ul li {
+  list-style-type: none;
+}
+</style>
+

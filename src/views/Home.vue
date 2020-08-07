@@ -29,17 +29,17 @@ export default {
   name: "Home",
   components: {
     Card,
-    Jumbotron
+    Jumbotron,
   },
   data() {
     return {
       groupedProps: {
         contacts: [],
         contactsPerPage: 6,
-        errorMessage: null
+        errorMessage: null,
       },
       contactCount: 0,
-      contactDataReceived: false
+      contactDataReceived: false,
     };
   },
   created() {
@@ -52,7 +52,9 @@ export default {
     },
     async getContactData() {
       try {
-        const response = await axios.get("https://sheet.best/api/sheets/a65159dd-5155-4cf9-8bcf-2fd4168b32fc");
+        const response = await axios.get(
+          "https://sheet.best/api/sheets/a65159dd-5155-4cf9-8bcf-2fd4168b32fc"
+        );
         this.groupedProps.contacts = response.data;
         this.contactCount = response.data.length;
         this.contactDataReceived = true;
@@ -64,9 +66,9 @@ export default {
     setContactsCount(count) {
       this.contactCount = count;
     },
-    test(){
-      alert("test")
-    }
-  }
+    test() {
+      alert("test");
+    },
+  },
 };
 </script>
