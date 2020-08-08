@@ -10,7 +10,9 @@
           <div class="contact-name">
             <h2>{{data.name}}</h2>
             <!-- TODO: Make category a clickable link -->
-            <span class="badge badge-secondary">{{data.category}}</span>
+            <a :href="'/'+ data.category">
+              <span class="badge badge-secondary">{{data.category}}</span>
+            </a>
           </div>
         </div>
         <!-- <div class="col"></div> -->
@@ -43,7 +45,7 @@
             </li>
             <li>
               <span>
-                <strong>Social Profiles:</strong>
+                <strong>Social Profiles: </strong>
               </span>
               <span class="social-media-icons">
                 <a v-if="data.facebook" :href="data.facebook" class="text-secondary">
