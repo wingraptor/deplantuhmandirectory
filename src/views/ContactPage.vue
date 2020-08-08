@@ -4,7 +4,7 @@
       <div class="row py-3 pt-4 border-bottom">
         <div class="col d-flex align-items-center">
           <!-- <img :src="data.logoUrl" alt="" width=""> -->
-          <div class="logo">
+          <div class="logo pr-3">
             <b-img :src="data.logoUrl" rounded width="150"></b-img>
           </div>
           <div class="contact-name">
