@@ -15,6 +15,9 @@
             href="https://forms.gle/DEgFuKVMR9kTDJmo9"
             class="color-highlight-one font-weight-bold"
           >Get Listed!</b-nav-item>
+          <b-nav-item href="/about" class="font-weight-bold">
+            About
+          </b-nav-item>
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->

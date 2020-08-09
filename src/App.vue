@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <NavBar/>
+    <NavBar />
     <router-view />
     <Footer />
   </div>
@@ -12,7 +12,7 @@ import NavBar from "@/components/NavBar.vue";
 export default {
   components: {
     Footer,
-    NavBar
+    NavBar,
   },
 };
 </script>
@@ -24,13 +24,26 @@ export default {
   --highlight-two-darker: #2d3d38;
   --highlight-three: #cdd3d5;
 }
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+
+/* Keeping Footer at bottom of Page: https://dev.to/niorad/keeping-the-footer-at-the-bottom-with-css-grid-15mf */
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 100%;
 }
 
-a:hover{
+a:hover {
   text-decoration: none !important;
 }
 
