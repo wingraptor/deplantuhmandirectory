@@ -9,7 +9,6 @@
           </div>
           <div class="contact-name">
             <h2>{{data.name}}</h2>
-            <!-- TODO: Make category a clickable link -->
             <a :href="'/'+ data.category">
               <span class="badge badge-secondary">{{data.category}}</span>
             </a>
