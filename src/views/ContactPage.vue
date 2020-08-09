@@ -108,8 +108,12 @@ export default {
 </script>
 
 <style scoped>
-ul li {
-  list-style-type: none;
+a{
+  color: var(--highlight-two)
+}
+
+a:hover{
+  color: var(--highlight-two-darker);
 }
 </style>
 
