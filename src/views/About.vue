@@ -21,7 +21,11 @@
         </p>
         <p>The list of contact categories that we have are listed here:</p>
         <div class="row">
-          <div class="col-md-3 d-flex justify-content-center my-2" v-for=" category in categories" :key="category">
+          <div
+            class="col-md-3 d-flex justify-content-center my-2"
+            v-for=" category in categories"
+            :key="category"
+          >
             <a :href="'/category/'+ category">
               <span class="badge badge-secondary p-2">{{category}}</span>
             </a>
@@ -64,7 +68,10 @@ export default {
 </script>
 
 <style scoped>
-.about {
-  /* max-height: 500px; */
+a {
+  color: var(--highlight-two);
+}
+a:hover {
+  color: var(--highlight-two-darker);
 }
 </style>

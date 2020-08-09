@@ -31,12 +31,12 @@ body {
   height: 100%;
 }
 
-
 /* Keeping Footer at bottom of Page: https://dev.to/niorad/keeping-the-footer-at-the-bottom-with-css-grid-15mf */
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "IBM Plex Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 1.1em;
   min-height: 100%;
   display: grid;
   grid-template-rows: auto 1fr auto;
