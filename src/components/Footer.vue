@@ -7,7 +7,15 @@
         <!-- Grid row-->
         <div class="row text-center d-flex justify-content-center pt-5">
           <!-- Grid column -->
-          <div class="col-md-2 mb-3"> 
+          <div class="col-md-2 mb-3">
+            <a href="#nav">
+              <v-icon name="arrow-up" scale="1.5"></v-icon>
+            </a>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-2 mb-3">
             <h6 class="text-uppercase">
               <a href="https://www.deplantuhman.com/">Blog</a>
             </h6>
@@ -33,7 +41,6 @@
         <!-- Grid row-->
         <hr class="rgba-white-light" style="margin: 0 15%;" />
 
-
         <!-- <hr class="clearfix d-md-none rgba-white-light" style="margin: 10% 15% 5%;" /> -->
 
         <!-- Grid row-->
@@ -42,15 +49,15 @@
           <div class="col-md-12">
             <div class="mb-1 d-flex justify-content-center">
               <!-- Facebook -->
-              <a href="#">
+              <a href="https://www.facebook.com/De-Plantuh-Man-103612707835899">
                 <v-icon name="brands/facebook" scale="1.5" class="m-2"></v-icon>
               </a>
               <!-- Twitter -->
-              <a href="#">
+              <a href="https://twitter.com/deplantuhman">
                 <v-icon name="brands/twitter" scale="1.5" class="m-2"></v-icon>
               </a>
               <!--Instagram-->
-              <a href="#">
+              <a href="http://instagram.com/deplantuhman246">
                 <v-icon name="brands/instagram" scale="1.5" class="m-2"></v-icon>
               </a>
             </div>
@@ -92,20 +99,19 @@ export default {
 </script>
 
 <style scoped>
-
-a{
+a {
   color: white;
 }
 
-a:hover{
+a:hover {
   color: var(--highlight-two-darker);
 }
 
-footer{
-  background-color: var(--highlight-two)
+footer {
+  background-color: var(--highlight-two);
 }
 
-.footer-attribution{
+.footer-attribution {
   background-color: var(--highlight-two-darker);
   color: white;
 }
@@ -113,6 +119,5 @@ footer{
 .footer-attribution a:hover {
   color: var(--highlight-two);
 }
-
 </style>
 
