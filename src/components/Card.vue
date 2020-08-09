@@ -22,7 +22,7 @@
         >
           <!-- https://stackoverflow.com/questions/45341169/bootstrap-vue-card-component-image-doesnt-render -->
           <!-- Disable the automatic <b-card-body> section (and associated padding) by setting the prop no-body on the <b-card>. https://bootstrap-vue.org/docs/components/card#cards-->
-          <b-card border-variant="secondary" no-body>
+          <b-card  no-body class="shadow">
             <a :href="'/contact/'+ contact.id" class="contact-link">
               <b-card-img
                 :src="contact.logoUrl || getImage(contact.category)"

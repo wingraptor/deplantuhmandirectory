@@ -24,6 +24,7 @@ export default {
 <style scoped>
 .jumbotron-component {
   margin-bottom: 1.5rem;
+  /* Darken background image: https://stackoverflow.com/a/26621579 */
   background: linear-gradient(rgba(0, 0, 0, 0.164), rgba(0, 0, 0, 0.5)), url("https://i.imgur.com/yS0q2tz.jpg");
   background-position: center;
   background-size: cover;
@@ -45,7 +46,4 @@ a{
   color: white
 }
 
-a:hover{
-  color: var(--highlight-one);
-}
 </style>
