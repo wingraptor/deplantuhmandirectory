@@ -1,13 +1,8 @@
 <template>
   <div class="about">
+    <div class="container d-flex justify-content-center">
     <h1>This is an about page</h1>
-    <iframe
-      src="https://docs.google.com/forms/d/e/1FAIpQLSebARzQHIs7FwZlh5xDnrBYQ6wobqpjlpgGbQ7s3iiUVo9GAA/viewform?embedded=true"
-      width="1000"
-      height="2541"
-      frameborder="0"
-      marginheight="0"
-      marginwidth="0"
-    >Loading…</iframe>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci tenetur a quidem blanditiis cum, ipsa enim eaque minima officia sit doloremque! Dolore quidem dolorem minus dignissimos excepturi veritatis suscipit voluptate.</p>
+    </div>
   </div>
 </template>

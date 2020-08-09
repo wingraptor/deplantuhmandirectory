@@ -8,8 +8,8 @@ Vue.use(VueRouter)
   const routes = [
     {
       // Optional Parameter: https://stackoverflow.com/a/49410475
-      path: "/:category?",
-      // alias: "/",
+      path: "/category/:category?",
+      alias: "/",
       name: "Home",
       component: Home,
     },

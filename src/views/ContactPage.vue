@@ -9,7 +9,7 @@
           </div>
           <div class="contact-name">
             <h2>{{data.name}}</h2>
-            <a :href="'/'+ data.category">
+            <a :href="'/category/'+ data.category">
               <span class="badge badge-secondary">{{data.category}}</span>
             </a>
           </div>

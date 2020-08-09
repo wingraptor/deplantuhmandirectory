@@ -116,7 +116,7 @@ export default {
       // Use event.currentTarget if event listener is attached to parent element
       // but you want to access properties of the child: https://stackoverflow.com/a/50049249
       let category = event.target.getAttribute("data-category");
-      this.$router.push(`/${category}`);
+      this.$router.push(`/category/${category}`);
     },
     // Filter contacts according to specific category
     filterContacts(category) {
@@ -124,7 +124,10 @@ export default {
         this.filteredContactsArr = this.contacts.filter(
           (contact) => contact.category === category
         );
+        // console.log(categoryName)
         this.categoryName = category;
+        console.log(this.categoryName)
+
         // Return user to Page 1 (home page) when switching category. This is because, if user is on page 2, then switches to a category which does not
         // have enough contacts to 'have' a Page 2, no cards will be displayed
         if (this.$route.query.page) {
@@ -158,13 +161,21 @@ export default {
       this.categories = [...new Set(this.contacts.map((obj) => obj.category))];
     },
     formatTelephoneNumber(telephoneNumber) {
+      // Callback function for reduce method
       const formatter = (accumulator, currentValue, currentIndex) => {
         if (currentIndex === 1 || currentIndex === 4 || currentIndex === 7) {
           currentValue += "-";
         }
         return accumulator + currentValue;
       };
-      return telephoneNumber.split("").reduce(formatter);
+
+      // Check to see that telephone number is there, if not return undefined. 
+      if(telephoneNumber){
+        return telephoneNumber.split("").reduce(formatter);
+      } else {
+        return undefined;
+      }
+      
     },
   },
   computed: {
