@@ -25,6 +25,14 @@
           <!-- Grid column -->
           <div class="col-md-2 mb-3">
             <h6 class="text-uppercase">
+              <a href="/about">About</a>
+            </h6>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-2 mb-3">
+            <h6 class="text-uppercase">
               <a href="https://anchor.fm/thegreenroombarbados">Podcast</a>
             </h6>
           </div>
