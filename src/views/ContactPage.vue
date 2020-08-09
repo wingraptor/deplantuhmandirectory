@@ -19,30 +19,29 @@
       <div class="row py-4 border-bottom">
         <div class="col">
           <h3>Description</h3>
-          <p>{{data.description}}</p>
+          <p>{{data.descriptionLong}}</p>
         </div>
       </div>
       <div class="row py-4">
         <div class="col">
           <h3>Contact Information</h3>
-          <ul>
-            <li v-if="data.address" class="py-1">
+            <p v-if="data.address" class="py-1 my-1">
               <strong>Address: </strong>
               {{data.address}}
-            </li>
-            <li v-if="data.website" class="py-1">
+            </p>
+            <p v-if="data.website" class="py-1 my-1">
               <strong>Website: </strong>
               <a :href="data.website" target="_blank">{{data.website}}</a>
-            </li>
-            <li v-if="data.email" class="py-1">
+            </p>
+            <p v-if="data.email" class="py-1 my-1">
               <strong>Email: </strong>
               <a :href="'mailto:'+ data.email">{{data.email}}</a>
-            </li>
-            <li v-if="data.phone" class="py-1">
+            </p>
+            <p v-if="data.phone" class="py-1 my-1">
               <strong>Tel: </strong>
               <a :href="'tel:+'+ data.phone">{{data.phone}}</a>
-            </li>
-            <li>
+            </p>
+            <p>
               <span>
                 <strong>Social Profiles: </strong>
               </span>
@@ -57,8 +56,7 @@
                   <v-icon name="brands/twitter" class="mx-1" scale="1.25"></v-icon>
                 </a>
               </span>
-            </li>
-          </ul>
+            </p>
         </div>
       </div>
     </div>
