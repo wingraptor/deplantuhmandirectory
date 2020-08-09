@@ -25,38 +25,38 @@
       <div class="row py-4">
         <div class="col">
           <h3>Contact Information</h3>
-            <p v-if="data.address" class="py-1 my-1">
-              <strong>Address: </strong>
-              {{data.address}}
-            </p>
-            <p v-if="data.website" class="py-1 my-1">
-              <strong>Website: </strong>
-              <a :href="data.website" target="_blank">{{data.website}}</a>
-            </p>
-            <p v-if="data.email" class="py-1 my-1">
-              <strong>Email: </strong>
-              <a :href="'mailto:'+ data.email">{{data.email}}</a>
-            </p>
-            <p v-if="data.phone" class="py-1 my-1">
-              <strong>Tel: </strong>
-              <a :href="'tel:+'+ data.phone">{{data.phone}}</a>
-            </p>
-            <p>
-              <span>
-                <strong>Social Profiles: </strong>
-              </span>
-              <span class="social-media-icons">
-                <a v-if="data.facebook" :href="data.facebook" class="text-secondary">
-                  <v-icon name="brands/facebook" class="mx-1" scale="1.25"></v-icon>
-                </a>
-                <a v-if="data.instagram" :href="data.instagram" class="text-secondary">
-                  <v-icon name="brands/instagram" class="mx-1" scale="1.25"></v-icon>
-                </a>
-                <a v-if="data.twitter" :href="data.twitter" class="text-secondary">
-                  <v-icon name="brands/twitter" class="mx-1" scale="1.25"></v-icon>
-                </a>
-              </span>
-            </p>
+          <p v-if="data.address" class="py-1 my-1">
+            <strong>Address: </strong>
+            {{data.address}}
+          </p>
+          <p v-if="data.website" class="py-1 my-1">
+            <strong>Website:  </strong>
+            <a :href="data.website" target="_blank">{{data.website}}</a>
+          </p>
+          <p v-if="data.email" class="py-1 my-1">
+            <strong>Email: </strong>
+            <a :href="'mailto:'+ data.email">{{data.email}}</a>
+          </p>
+          <p v-if="data.phone" class="py-1 my-1">
+            <strong>Tel: </strong>
+            <a :href="'tel:+'+ data.phone">{{formatTelephoneNumber(data.phone)}}</a>
+          </p>
+          <p>
+            <span>
+              <strong>Social Profiles: </strong>
+            </span>
+            <span class="social-media-icons">
+              <a v-if="data.facebook" :href="data.facebook" class="text-secondary">
+                <v-icon name="brands/facebook" class="mx-1" scale="1.25"></v-icon>
+              </a>
+              <a v-if="data.instagram" :href="data.instagram" class="text-secondary">
+                <v-icon name="brands/instagram" class="mx-1" scale="1.25"></v-icon>
+              </a>
+              <a v-if="data.twitter" :href="data.twitter" class="text-secondary">
+                <v-icon name="brands/twitter" class="mx-1" scale="1.25"></v-icon>
+              </a>
+            </span>
+          </p>
         </div>
       </div>
     </div>
@@ -93,6 +93,15 @@ export default {
       } catch (error) {
         console.log(error);
       }
+    },
+    formatTelephoneNumber(telephoneNumber) {
+      const formatter = (accumulator, currentValue, currentIndex) => {
+        if (currentIndex === 1 || currentIndex === 4 || currentIndex === 7) {
+          currentValue += "-";
+        }
+        return accumulator + currentValue;
+      };
+      return telephoneNumber.split("").reduce(formatter);
     },
   },
 };

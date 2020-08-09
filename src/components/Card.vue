@@ -65,7 +65,7 @@
                 src="../assets/icons/phone-call.svg"
                 alt
                 height="26"
-                v-b-popover.hover="contact.phone || 'No number available'"
+                v-b-popover.hover="formatTelephoneNumber(contact.phone) || 'No number available'"
               />
               <img
                 src="../assets/icons/email.svg"
@@ -156,6 +156,15 @@ export default {
     getCategories() {
       // Create an array of all the available categories for contacts from the data returned from API call
       this.categories = [...new Set(this.contacts.map((obj) => obj.category))];
+    },
+    formatTelephoneNumber(telephoneNumber) {
+      const formatter = (accumulator, currentValue, currentIndex) => {
+        if (currentIndex === 1 || currentIndex === 4 || currentIndex === 7) {
+          currentValue += "-";
+        }
+        return accumulator + currentValue;
+      };
+      return telephoneNumber.split("").reduce(formatter);
     },
   },
   computed: {
