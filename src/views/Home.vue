@@ -14,6 +14,7 @@
         :limit="10"
         align="center"
         use-router
+        v-on:change="scrollToTop"
       ></b-pagination-nav>
     </div>
   </div>
@@ -66,8 +67,10 @@ export default {
     setContactsCount(count) {
       this.contactCount = count;
     },
-    test() {
-      alert("test");
+    // Scroll to category Div when user paginates to a new page
+    scrollToTop() {
+      const categoryDiv = document.querySelector("#dropdown-1");
+      categoryDiv.scrollIntoView({behavior: 'smooth'});
     },
   },
 };
