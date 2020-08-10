@@ -6,8 +6,11 @@
     </div>-->
     <div class="text-white text-center">
       <h1>De Plantuh Man Directory</h1>
-      <p id="page-description" class="my-5 text-center">Scroll to see a selection of agricultural products, services and contacts available in Barbados.</p>
-      <a href="#dropdown-1" id="scroll-to-content">
+      <p
+        id="page-description"
+        class="my-5 text-center"
+      >Scroll to see a selection of agricultural products, services and contacts available in Barbados.</p>
+      <a @click="scrollToTop" id="scroll-to-content">
         <v-icon name="arrow-down" scale="2"></v-icon>
       </a>
     </div>
@@ -17,6 +20,13 @@
 <script>
 export default {
   name: "Jumbotron",
+  methods: {
+    // Scroll to category Div when user clicks arrow in jumbotron
+    scrollToTop() {
+      const categoryDiv = document.querySelector("#dropdown-1");
+      categoryDiv.scrollIntoView({ behavior: "smooth" });
+    },
+  },
 };
 </script>
 
@@ -25,25 +35,26 @@ export default {
 .jumbotron-component {
   margin-bottom: 1.5rem;
   /* Darken background image: https://stackoverflow.com/a/26621579 */
-  background: linear-gradient(rgba(0, 0, 0, 0.164), rgba(0, 0, 0, 0.5)), url("https://i.imgur.com/yS0q2tz.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.164), rgba(0, 0, 0, 0.5)),
+    url("https://i.imgur.com/yS0q2tz.jpg");
   background-position: center;
   background-size: cover;
   height: 500px;
-  font-family: 'Roboto Slab', serif;
-  position:relative;
+  font-family: "Roboto Slab", serif;
+  position: relative;
 }
 
-#scroll-to-content{
-  position:absolute;
-  bottom:50px;
+#scroll-to-content {
+  position: absolute;
+  bottom: 50px;
+  cursor: pointer;
 }
 
-#page-description{
+#page-description {
   font-size: 1.5rem;
 }
 
-a{
-  color: white
+a {
+  color: white;
 }
-
 </style>

@@ -8,7 +8,7 @@
         <div class="row text-center d-flex justify-content-center pt-5">
           <!-- Grid column -->
           <div class="col-md-2 mb-3">
-            <a href="#nav">
+            <a @click="scrollToTop" id="scroll-to-top">
               <v-icon name="arrow-up" scale="1.5"></v-icon>
             </a>
           </div>
@@ -102,7 +102,13 @@ export default {
     };
   },
   created() {},
-  methods: {},
+  methods: {
+    // Scroll to category Div when user clicks arrow in footer
+    scrollToTop() {
+      const categoryDiv = document.querySelector("#dropdown-1");
+      categoryDiv.scrollIntoView({ behavior: "smooth" });
+    },
+  },
 };
 </script>
 
@@ -112,6 +118,15 @@ a {
 }
 
 a:hover {
+  color: var(--highlight-two-darker);
+}
+
+#scroll-to-top {
+  color: white;
+  cursor: pointer;
+}
+
+#scroll-to-top:hover {
   color: var(--highlight-two-darker);
 }
 
