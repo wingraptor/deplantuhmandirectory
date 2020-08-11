@@ -102,7 +102,7 @@ export default {
         Organisation: "https://i.imgur.com/CmUEPeSh.jpg",
         Business: "https://i.imgur.com/MJt6VD3h.jpg",
         Freighting: "https://i.imgur.com/yEXo2B8h.jpg",
-        Farmer: "https://i.imgur.com/4dBKaIah.jpg",
+        Farm: "https://i.imgur.com/4dBKaIah.jpg",
         AgriculturalSupplies: "https://i.imgur.com/LEwmNIFh.jpg",
         SoilAndAmmendments: "https://i.imgur.com/Q8uxEwLh.jpg",
         Restaurant: "https://i.imgur.com/0v0L5rNh.png",
@@ -224,6 +224,11 @@ export default {
 .card {
   margin-bottom: 20px;
   width: 100%;
+}
+
+.card-img-top{
+  max-height: 200px;
+  /* max-width: 300px; */
 }
 
 .card-footer {

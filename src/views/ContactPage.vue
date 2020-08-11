@@ -5,7 +5,7 @@
         <div class="col d-flex align-items-center">
           <!-- <img :src="data.logoUrl" alt="" width=""> -->
           <div class="logo pr-3">
-            <b-img :src="data.logoUrl" rounded width="150"></b-img>
+            <b-img :src="data.logoUrl" rounded height="150"></b-img>
           </div>
           <div class="contact-name">
             <h2>{{data.name}}</h2>
