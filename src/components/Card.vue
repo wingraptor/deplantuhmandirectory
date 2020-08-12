@@ -16,13 +16,14 @@
       </div>
       <div class="row">
         <div
-          class="col-12 col-md-4 d-flex justify-content-center"
+          class="col-12 col-sm-6 col-lg-4 d-flex justify-content-center"
           v-for="(contact) in slicedContactArray"
           :key="contact.name"
         >
           <!-- https://stackoverflow.com/questions/45341169/bootstrap-vue-card-component-image-doesnt-render -->
           <!-- Disable the automatic <b-card-body> section (and associated padding) by setting the prop no-body on the <b-card>. https://bootstrap-vue.org/docs/components/card#cards-->
-          <b-card  no-body class="shadow">
+          <b-card no-body class="shadow">
+            <!-- Card Image -->
             <a :href="'/contact/'+ contact.id" class="contact-link">
               <b-card-img
                 :src="contact.logoUrl || getImage(contact.category)"
@@ -30,9 +31,16 @@
                 class="rounded-0"
               ></b-card-img>
             </a>
+            <!-- Card Body -->
             <b-card-body>
-              <a :href="'/contact/'+ contact.id" class="contact-link">
+              <a :href="'/contact/'+ contact.id" class="contact-link ">
+              <!-- Title -->
                 <b-card-title>{{contact.name}}</b-card-title>
+                <!-- Category Badgfe -->
+                <a :href="'/category/'+ contact.category">
+                  <b-card-sub-title class="pb-3 pt-1">{{contact.category}}</b-card-sub-title>
+                </a>
+                <!-- Card Text -->
                 <b-card-text align="left">
                   <p v-if="contact.description">{{contact.description}}</p>
                   <!-- <p v-if="contact.phone">
@@ -126,7 +134,7 @@ export default {
         );
         // console.log(categoryName)
         this.categoryName = category;
-        console.log(this.categoryName)
+        console.log(this.categoryName);
 
         // Return user to Page 1 (home page) when switching category. This is because, if user is on page 2, then switches to a category which does not
         // have enough contacts to 'have' a Page 2, no cards will be displayed
@@ -169,13 +177,12 @@ export default {
         return accumulator + currentValue;
       };
 
-      // Check to see that telephone number is there, if not return undefined. 
-      if(telephoneNumber){
+      // Check to see that telephone number is there, if not return undefined.
+      if (telephoneNumber) {
         return telephoneNumber.split("").reduce(formatter);
       } else {
         return undefined;
       }
-      
     },
   },
   computed: {
@@ -211,6 +218,14 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+a {
+  color: var(--highlight-two);
+}
+
+a:hover {
+  color: var(--highlight-two-darker);
+}
+
 .contact-link {
   color: inherit;
   text-decoration: none;
@@ -226,7 +241,7 @@ export default {
   width: 100%;
 }
 
-.card-img-top{
+.card-img-top {
   max-height: 200px;
   /* max-width: 300px; */
 }
