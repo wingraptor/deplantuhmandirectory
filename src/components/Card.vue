@@ -166,7 +166,7 @@ export default {
     },
     getCategories() {
       // Create an array of all the available categories for contacts from the data returned from API call
-      this.categories = [...new Set(this.contacts.map((obj) => obj.category))];
+      this.categories = [...new Set(this.contacts.map((obj) => obj.category))].sort();
     },
     formatTelephoneNumber(telephoneNumber) {
       // Callback function for reduce method
