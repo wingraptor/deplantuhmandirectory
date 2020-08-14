@@ -1,20 +1,25 @@
 <template>
   <div class="contact">
     <div class="container my-5">
-      <div class="row py-3 pt-4 border-bottom">
-        <div class="col d-flex align-items-center">
+      <div class="row py-3 pt-4 border-bottom d-flex align-items-center">
+        <div class="col-lg-auto">
           <!-- <img :src="data.logoUrl" alt="" width=""> -->
           <div class="logo pr-3">
             <b-img :src="data.logoUrl" rounded height="150"></b-img>
           </div>
-          <div class="contact-name">
+          <!-- <div class="contact-name">
             <h2>{{data.name}}</h2>
             <a :href="'/category/'+ data.category">
               <span class="badge badge-secondary">{{data.category}}</span>
             </a>
-          </div>
+          </div> -->
         </div>
-        <!-- <div class="col"></div> -->
+        <div class="col mt-3">
+          <h2>{{data.name}}</h2>
+          <a :href="'/category/'+ data.category">
+            <span class="badge badge-secondary">{{data.category}}</span>
+          </a>
+        </div>
       </div>
       <div class="row py-4 border-bottom">
         <div class="col">
@@ -26,24 +31,24 @@
         <div class="col">
           <h3>Contact Information</h3>
           <p v-if="data.address" class="py-1 my-1">
-            <strong>Address: </strong>
+            <strong>Address:</strong>
             {{data.address}}
           </p>
           <p v-if="data.website" class="py-1 my-1">
-            <strong>Website:  </strong>
+            <strong>Website:</strong>
             <a :href="data.website" target="_blank">{{data.website}}</a>
           </p>
           <p v-if="data.email" class="py-1 my-1">
-            <strong>Email: </strong>
+            <strong>Email:</strong>
             <a :href="'mailto:'+ data.email">{{data.email}}</a>
           </p>
           <p v-if="data.phone" class="py-1 my-1">
-            <strong>Tel: </strong>
+            <strong>Tel:</strong>
             <a :href="'tel:+'+ data.phone">{{formatTelephoneNumber(data.phone)}}</a>
           </p>
           <p>
             <span>
-              <strong>Social Profiles: </strong>
+              <strong>Social Profiles:</strong>
             </span>
             <span class="social-media-icons">
               <a v-if="data.facebook" :href="data.facebook" class="text-secondary">
@@ -108,11 +113,11 @@ export default {
 </script>
 
 <style scoped>
-a{
-  color: var(--highlight-two)
+a {
+  color: var(--highlight-two);
 }
 
-a:hover{
+a:hover {
   color: var(--highlight-two-darker);
 }
 </style>
