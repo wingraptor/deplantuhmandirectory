@@ -12,7 +12,7 @@
             <a :href="'/category/'+ data.category">
               <span class="badge badge-secondary">{{data.category}}</span>
             </a>
-          </div> -->
+          </div>-->
         </div>
         <div class="col mt-3">
           <h2>{{data.name}}</h2>
@@ -31,24 +31,24 @@
         <div class="col">
           <h3>Contact Information</h3>
           <p v-if="data.address" class="py-1 my-1">
-            <strong>Address:</strong>
+            <strong>Address: </strong>
             {{data.address}}
           </p>
           <p v-if="data.website" class="py-1 my-1">
-            <strong>Website:</strong>
+            <strong>Website: </strong>
             <a :href="data.website" target="_blank">{{data.website}}</a>
           </p>
           <p v-if="data.email" class="py-1 my-1">
-            <strong>Email:</strong>
-            <a :href="'mailto:'+ data.email">{{data.email}}</a>
+            <strong>Email: </strong>
+            <a :href="'mailto:'+ data.email">{{ data.email}}</a>
           </p>
           <p v-if="data.phone" class="py-1 my-1">
-            <strong>Tel:</strong>
+            <strong>Tel: </strong>
             <a :href="'tel:+'+ data.phone">{{formatTelephoneNumber(data.phone)}}</a>
           </p>
           <p>
             <span>
-              <strong>Social Profiles:</strong>
+              <strong>Social Profiles: </strong>
             </span>
             <span class="social-media-icons">
               <a v-if="data.facebook" :href="data.facebook" class="text-secondary">
