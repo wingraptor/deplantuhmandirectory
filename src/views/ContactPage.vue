@@ -2,18 +2,12 @@
   <div class="contact">
     <div class="container my-5">
       <div class="row py-3 pt-4 border-bottom d-flex align-items-center">
-        <div class="col-lg-auto">
-          <!-- <img :src="data.logoUrl" alt="" width=""> -->
+        <!-- Contact Logo -->
+        <!-- <div class="col-lg-auto">
           <div class="logo pr-3">
             <b-img :src="data.logoUrl" rounded height="150"></b-img>
           </div>
-          <!-- <div class="contact-name">
-            <h2>{{data.name}}</h2>
-            <a :href="'/category/'+ data.category">
-              <span class="badge badge-secondary">{{data.category}}</span>
-            </a>
-          </div>-->
-        </div>
+        </div> -->
         <div class="col mt-3">
           <h2>{{data.name}}</h2>
           <a :href="'/category/'+ data.category">
@@ -65,9 +59,6 @@
         </div>
       </div>
     </div>
-    <!-- <div class="container">
-
-    </div>-->
   </div>
 </template>
 
@@ -109,6 +100,9 @@ export default {
       return telephoneNumber.split("").reduce(formatter);
     },
   },
+  mounted(){
+    document.getElementById("nav").scrollIntoView();
+  }
 };
 </script>
 
