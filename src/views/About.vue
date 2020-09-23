@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <div class="container my-5">
-      <h1 class="border-bottom">About</h1>
+      <h1 class="text-center">About</h1>
       <div class="about-text pt-5">
         <p>
           De Plantuh Man Directory started life as a simple spreadsheet of contacts in the agricultural and adjacent industries in Barbados which was set up for our personal use.
