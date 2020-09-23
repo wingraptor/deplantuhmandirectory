@@ -4,13 +4,18 @@
     <!-- Only load card component when contact is received from API ->  https://stackoverflow.com/a/45060619 -->
     <template v-if="contactDataReceived">
       <div class="container">
+        <!-- Search Input Row -->
+        <div class="row">
+          <div class="col d-flex justify-content-center m-4">
+            <searchButton :contacts="contacts" />
+          </div>
+        </div>
         <!-- Contacts Filter Row -->
         <div class="row">
           <div class="col d-flex justify-content-center" id="filter-div">
             <ContactsFilter v-bind:categories="categories" />
           </div>
         </div>
-
         <!-- Contacts Cards Row -->
         <div class="row">
           <div
@@ -44,6 +49,7 @@ import Card from "@/components/Card.vue";
 import Jumbotron from "@/components/Jumbotron.vue";
 import ContactsFilter from "@/components/ContactsFilter.vue";
 import axios from "axios";
+import searchButton from "@/components/searchBar.vue";
 
 export default {
   name: "Home",
@@ -51,6 +57,7 @@ export default {
     Card,
     Jumbotron,
     ContactsFilter,
+    searchButton,
   },
   data() {
     return {
@@ -112,7 +119,6 @@ export default {
       // Handle if no category param is sent, that is, no filter for contact category is present
       else {
         this.filteredContactsArr = this.contacts;
-        console.log(this.contacts);
       }
     },
   },
@@ -130,9 +136,9 @@ export default {
       this.filterContacts(category);
     },
     // Watch for updates to filtered Contacts so as to update the number of pages shown in the pagination div
-    filteredContactsArr(val){
+    filteredContactsArr(val) {
       this.setContactsCount(val.length);
-    }
+    },
   },
   computed: {
     slicedContactArray() {
