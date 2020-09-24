@@ -7,7 +7,7 @@
         <!-- Search Input Row -->
         <div class="row">
           <div class="col d-flex justify-content-center m-4">
-            <searchButton :contacts="contacts" />
+            <SearchBar :contacts="contacts" />
           </div>
         </div>
         <!-- Contacts Filter Row -->
@@ -49,7 +49,7 @@ import Card from "@/components/Card.vue";
 import Jumbotron from "@/components/Jumbotron.vue";
 import ContactsFilter from "@/components/ContactsFilter.vue";
 import axios from "axios";
-import searchButton from "@/components/searchBar.vue";
+import SearchBar from "@/components/SearchBar.vue";
 
 export default {
   name: "Home",
@@ -57,7 +57,7 @@ export default {
     Card,
     Jumbotron,
     ContactsFilter,
-    searchButton,
+    SearchBar,
   },
   data() {
     return {

@@ -34,8 +34,13 @@
 </template>
 
 <script>
+
 export default {
   name: "NavBar",
+  props:["contacts"],
+  components:{
+
+  }
 };
 </script>
 
